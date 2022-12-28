@@ -17,7 +17,7 @@ public class AddressBookMain {
 		AddressBook addrBook;
 		HashMap<String, AddressBook> addrBooks = new HashMap<String, AddressBook>();
 
-		char superChoice = ' ', choice, viewChoice;
+		char superChoice = ' ', choice, viewChoice, countChoice;
 
 		while (true) {
 
@@ -47,6 +47,7 @@ public class AddressBookMain {
 					System.out.println("Press '2' to edit existing Contact!");
 					System.out.println("Press '3' to view Contacts in list!");
 					System.out.println("Press '4' to delete Contact!");
+					System.out.println("Press '5' to view Persons in State or City!");
 					System.out.println("Press 'x' to exit current Address Book!");
 					System.out.print("Enter your choice: ");
 					choice = scanner.next().charAt(0);
@@ -68,6 +69,40 @@ public class AddressBookMain {
 						break;
 					case '4':
 						addrBook.deletePerson();
+						break;
+					case '5':
+						scanner.nextLine();
+						System.out.println("Enter '1' to view by State Names!");
+						System.out.println("Enter '2' to view by City Names!");
+						System.out.println("Enter your choice: ");
+						viewChoice = scanner.next().charAt(0);
+
+						System.out.println("\n-------------------------------------------------------");
+
+						switch (viewChoice) {
+						case '1':
+							scanner.nextLine();
+							System.out.println("Enter State Name: ");
+							stateName = scanner.nextLine();
+							addrBook.viewPersons(stateName);
+
+							break;
+						case '2':
+							scanner.nextLine();
+							System.out.println("Enter State Name: ");
+							stateName = scanner.nextLine();
+
+							System.out.println("Enter City Name: ");
+							cityName = scanner.next();
+
+							addrBook.viewPersons(stateName, cityName);
+							break;
+
+						default:
+							System.out.println("Invalid: View Choice!");
+						}
+
+						System.out.println("-------------------------------------------------------");
 						break;
 					case 'x':
 						System.out.println("Exiting Current Address Book!\n");
@@ -106,7 +141,7 @@ public class AddressBookMain {
 
 					System.out.println("Enter City Name: ");
 					cityName = scanner.next();
-					
+
 					addrBook.viewAddrBook(stateName, cityName);
 					break;
 				default:
