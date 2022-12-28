@@ -26,6 +26,15 @@ public class ContactPerson {
 		this.phonNum = phonNum;
 	}
 
+	public String getCity() {
+		return city;
+	}
+
+
+	public String getState() {
+		return state;
+	}
+
 	String getName() {
 		return firstName + lastName;
 	}
