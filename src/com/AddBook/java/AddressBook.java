@@ -24,22 +24,21 @@ public class AddressBook {
 	private int count;
 	private boolean checkEquality;
 	private HashMap<ContactPerson, String> personsState, personsCity;
-	
+
 	public AddressBook() {
 
 		persons = new ArrayList<>();
 		personsState = new HashMap<>();
-		personsCity = new HashMap<>();	
-	}	
-	
-	//Method input first and last name
+		personsCity = new HashMap<>();
+	}
+
 	private void inputNames() {
 		System.out.println("Enter first name: ");
 		fname = scanner.next();
 		System.out.println("Enter last name: ");
 		lname = scanner.next();
 	}
-	//method to get input contacts 
+
 	private void inputContacts() {
 		System.out.println("Enter email: ");
 		mail = scanner.next();
@@ -56,10 +55,7 @@ public class AddressBook {
 		System.out.println("Enter phone number: ");
 		phone = scanner.nextLong();
 	}
-	
-	/*
-	 * method of add person
-	 */
+
 	void addPerson() {
 		System.out.println("Enter Person " + (count + 1) + " Details:");
 		inputNames();
@@ -171,4 +167,16 @@ public class AddressBook {
 			
 		}
 	}
+	
+	long getCountByState(String state) {
+		return personsState.values().stream()
+				.filter(prsnState -> prsnState.equals(state)).count();
+	}
+	
+	long getCountByCity(String city) {
+		return personsCity.values().stream()
+				.filter(prsnCity -> prsnCity.equals(city)).count();
+	}
+
+
 }

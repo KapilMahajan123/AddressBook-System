@@ -48,6 +48,7 @@ public class AddressBookMain {
 					System.out.println("Press '3' to view Contacts in list!");
 					System.out.println("Press '4' to delete Contact!");
 					System.out.println("Press '5' to view Persons in State or City!");
+					System.out.println("Press '6' to count Persons by city or state!");
 					System.out.println("Press 'x' to exit current Address Book!");
 					System.out.print("Enter your choice: ");
 					choice = scanner.next().charAt(0);
@@ -103,6 +104,34 @@ public class AddressBookMain {
 						}
 
 						System.out.println("-------------------------------------------------------");
+						break;
+					case '6':
+						scanner.nextLine();
+						System.out.println("Enter '1' to count by State Names!");
+						System.out.println("Enter '2' to count by City Names!");
+						System.out.println("Enter your choice: ");
+						countChoice = scanner.next().charAt(0);
+
+						System.out.println("\n-------------------------------------------------------");
+
+						switch (countChoice) {
+						case '1':
+							scanner.nextLine();
+							System.out.println("Enter State Name: ");
+							stateName = scanner.nextLine();
+							long countByState = addrBook.getCountByState(stateName);
+							System.out.println(
+									"Total no of Persons from state: " + stateName + "" + " = " + countByState);
+							break;
+						case '2':
+							System.out.println("Enter City Name: ");
+							cityName = scanner.next();
+							long countByCity = addrBook.getCountByCity(cityName);
+							System.out.println("Total no of Persons from city: " + cityName + "" + " = " + countByCity);
+							break;
+						default:
+							System.out.println("Invalid: Count Choice!");
+						}
 						break;
 					case 'x':
 						System.out.println("Exiting Current Address Book!\n");
