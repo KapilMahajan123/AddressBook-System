@@ -5,7 +5,7 @@ package com.AddBook.java;
  * @author Kapil
  *
  */
-public class ContactPerson {
+public class ContactPerson implements Comparable<ContactPerson>{
 	
 	/**
 	 * following naming conventiaon
@@ -25,7 +25,10 @@ public class ContactPerson {
 		this.zip = zip;
 		this.phonNum = phonNum;
 	}
-
+	/**
+	 * getter method to get city, state and names and 
+	 * @return
+	 */
 	public String getCity() {
 		return city;
 	}
@@ -52,5 +55,14 @@ public class ContactPerson {
 			return true;
 		}
 		return false;
+	}
+	
+	public int compareTo(ContactPerson person) {
+		if (getName().compareTo(person.getName()) > 0)
+			return 1;
+		else if (getName().compareTo(person.getName()) < 0)
+			return -1;
+		else
+			return 0;		
 	}
 }

@@ -2,6 +2,8 @@ package com.AddBook.java;
 
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * 
@@ -9,7 +11,12 @@ import java.util.Scanner;
  *
  */
 public class AddressBookMain {
-
+	
+	/*
+	 * Ability to sort the entries in the addressBook
+	 * In the alphabetically by person name
+	 * Use console to sort person details by name
+	 */
 	public static void main(String[] args) {
 		String addrBookName = "", stateName, cityName;
 		System.out.println("Welcome to Address Book Program!");
@@ -49,6 +56,7 @@ public class AddressBookMain {
 					System.out.println("Press '4' to delete Contact!");
 					System.out.println("Press '5' to view Persons in State or City!");
 					System.out.println("Press '6' to count Persons by city or state!");
+					System.out.println("Press '7' to view sorted Persons by name!");
 					System.out.println("Press 'x' to exit current Address Book!");
 					System.out.print("Enter your choice: ");
 					choice = scanner.next().charAt(0);
@@ -133,6 +141,10 @@ public class AddressBookMain {
 							System.out.println("Invalid: Count Choice!");
 						}
 						break;
+					case '7':
+						List<ContactPerson> sortedPersons = addrBook.sortPersons();
+						System.out.println(sortedPersons);
+						break;
 					case 'x':
 						System.out.println("Exiting Current Address Book!\n");
 						continue;
@@ -156,6 +168,10 @@ public class AddressBookMain {
 
 				System.out.println("\n-------------------------------------------------------");
 				System.out.println("Name of Address Book: " + addrBookName + "\n");
+				
+				/*
+				 * Enter your choice to added contact of list
+				 */
 				switch (viewChoice) {
 				case '1':
 					scanner.nextLine();

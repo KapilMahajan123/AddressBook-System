@@ -31,14 +31,18 @@ public class AddressBook {
 		personsState = new HashMap<>();
 		personsCity = new HashMap<>();
 	}
-
+	/*
+	 * method to get input first and last name
+	 */
 	private void inputNames() {
 		System.out.println("Enter first name: ");
 		fname = scanner.next();
 		System.out.println("Enter last name: ");
 		lname = scanner.next();
 	}
-
+	/*
+	 * method to get of input contacts detail
+	 */
 	private void inputContacts() {
 		System.out.println("Enter email: ");
 		mail = scanner.next();
@@ -55,7 +59,9 @@ public class AddressBook {
 		System.out.println("Enter phone number: ");
 		phone = scanner.nextLong();
 	}
-
+	/*
+	 * method to added person details
+	 */
 	void addPerson() {
 		System.out.println("Enter Person " + (count + 1) + " Details:");
 		inputNames();
@@ -74,7 +80,9 @@ public class AddressBook {
 			System.out.println("Duplicate Name: Can't add person details!");
 
 	}
-
+	/*
+	 * using for loop and to get check condition in boolean are equals
+	 */
 	private boolean areNamesEqual() {
 		for (i = 0; i < persons.size(); i++)
 			if (persons.get(i).getName().equals(fname + lname)) {
@@ -83,7 +91,9 @@ public class AddressBook {
 			}
 		return false;
 	}
-
+	/*
+	 * method to updated persons
+	 */
 	void updatePerson() {
 		inputNames();
 		checkEquality = areNamesEqual();
@@ -101,7 +111,9 @@ public class AddressBook {
 		} else
 			System.out.println("No match available!");
 	}
-
+	/*
+	 * method to deleted person
+	 */
 	void deletePerson() {
 		inputNames();
 		checkEquality = areNamesEqual();
@@ -176,6 +188,10 @@ public class AddressBook {
 	long getCountByCity(String city) {
 		return personsCity.values().stream()
 				.filter(prsnCity -> prsnCity.equals(city)).count();
+	}
+	
+	List<ContactPerson> sortPersons() {
+		return persons.stream().sorted().collect(Collectors.toList());
 	}
 
 
