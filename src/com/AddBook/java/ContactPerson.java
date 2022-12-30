@@ -33,9 +33,12 @@ public class ContactPerson implements Comparable<ContactPerson>{
 		return city;
 	}
 
-
 	public String getState() {
 		return state;
+	}
+	
+	public Integer getZip() {
+		return zip;
 	}
 
 	String getName() {

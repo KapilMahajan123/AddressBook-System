@@ -31,6 +31,9 @@ public class AddressBook {
 		personsState = new HashMap<>();
 		personsCity = new HashMap<>();
 	}
+	public ArrayList<ContactPerson> getPersons() {
+		return persons;
+	}
 	/*
 	 * method to get input first and last name
 	 */

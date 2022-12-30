@@ -1,9 +1,11 @@
 package com.AddBook.java;
 
 import java.util.HashMap;
+import java.util.Comparator;
 import java.util.Scanner;
-import java.util.Arrays;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 
@@ -24,8 +26,35 @@ public class AddressBookMain {
 		AddressBook addrBook;
 		HashMap<String, AddressBook> addrBooks = new HashMap<String, AddressBook>();
 
-		char superChoice = ' ', choice, viewChoice, countChoice;
+		char superChoice = ' ', choice, viewChoice, countChoice, sortChoice;
 
+		Comparator<ContactPerson> cityComparator = (prsn1, prs2) -> {
+			if (prsn1.getCity().compareTo(prs2.getCity()) > 0)
+				return 1;
+			else if (prsn1.getCity().compareTo(prs2.getCity()) < 0)
+				return -1;
+			else
+				return 0;
+		};
+		
+		Comparator<ContactPerson> stateComparator = (prsn1, prs2) -> {
+			if (prsn1.getState().compareTo(prs2.getState()) > 0)
+				return 1;
+			else if (prsn1.getState().compareTo(prs2.getState()) < 0)
+				return -1;
+			else
+				return 0;
+		};
+		
+		Comparator<ContactPerson> zipComparator = (prsn1, prs2) -> {
+			if (prsn1.getZip().compareTo(prs2.getZip()) > 0)
+				return 1;
+			else if (prsn1.getZip().compareTo(prs2.getZip()) < 0)
+				return -1;
+			else
+				return 0;
+		};
+		
 		while (true) {
 
 			if (superChoice == 'x')
@@ -57,6 +86,7 @@ public class AddressBookMain {
 					System.out.println("Press '5' to view Persons in State or City!");
 					System.out.println("Press '6' to count Persons by city or state!");
 					System.out.println("Press '7' to view sorted Persons by name!");
+					System.out.println("Press '8' to view sorted Persons either by city, state or zip!");
 					System.out.println("Press 'x' to exit current Address Book!");
 					System.out.print("Enter your choice: ");
 					choice = scanner.next().charAt(0);
@@ -87,7 +117,10 @@ public class AddressBookMain {
 						viewChoice = scanner.next().charAt(0);
 
 						System.out.println("\n-------------------------------------------------------");
-
+						
+						/*
+						 * Enter your choice to added contact of list
+						 */
 						switch (viewChoice) {
 						case '1':
 							scanner.nextLine();
@@ -145,6 +178,31 @@ public class AddressBookMain {
 						List<ContactPerson> sortedPersons = addrBook.sortPersons();
 						System.out.println(sortedPersons);
 						break;
+					case '8':
+						System.out.println("Press '1' to sort by city names!");
+						System.out.println("Press '2' to sort by state names!");
+						System.out.println("Press '3' to sort by zip names!");
+						System.out.println("Enter your choice:");
+						sortChoice = scanner.next().charAt(0);
+						
+						ArrayList<ContactPerson> persons = addrBook.getPersons();
+						
+						List<ContactPerson> sortedPrsns = null;
+						switch (sortChoice) {
+						case '1':
+							sortedPrsns = persons.stream().sorted(cityComparator).collect(Collectors.toList()); 
+							break;
+						case '2':
+							sortedPrsns = persons.stream().sorted(stateComparator).collect(Collectors.toList()); 
+							break;
+						case '3':
+							sortedPrsns = persons.stream().sorted(zipComparator).collect(Collectors.toList()); 
+							break;
+						default:
+							System.out.println("Invalid: Sort choice!");
+						}
+						System.out.println(sortedPrsns);
+						break;
 					case 'x':
 						System.out.println("Exiting Current Address Book!\n");
 						continue;
@@ -168,10 +226,6 @@ public class AddressBookMain {
 
 				System.out.println("\n-------------------------------------------------------");
 				System.out.println("Name of Address Book: " + addrBookName + "\n");
-				
-				/*
-				 * Enter your choice to added contact of list
-				 */
 				switch (viewChoice) {
 				case '1':
 					scanner.nextLine();
