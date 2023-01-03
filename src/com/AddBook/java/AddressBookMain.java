@@ -1,5 +1,10 @@
 package com.AddBook.java;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.HashMap;
 import java.util.Comparator;
 import java.util.Scanner;
@@ -255,6 +260,23 @@ public class AddressBookMain {
 			default:
 				System.out.println("Invalid: Please enter correct choice!");
 			}
+		}
+		
+		/*
+		 * Ability to read or write the addBook with contact person 
+		 * Into a file using file IO
+		 */
+		Path path = Paths.get("C:\\Users\\mahaj\\Desktop\\229\\Day22-AddressBook");
+		try {
+			Files.deleteIfExists(path);
+			Files.write(path, addrBooks.keySet().stream().map(key -> addrBooks.get(key).toString())
+					.collect(Collectors.toList()), StandardOpenOption.CREATE);
+			
+			List<String> readAllLines = Files.readAllLines(path);
+			readAllLines.stream().forEach(line -> System.out.println(line));
+			
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 
 		scanner.close();
