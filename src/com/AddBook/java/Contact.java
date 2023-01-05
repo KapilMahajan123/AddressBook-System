@@ -1,4 +1,10 @@
 package com.AddBook.java;
+
+/**
+ * 
+ * @author Kapil
+ *
+ */
 public class Contact {
 	public String firstName, lastName, address, city, state, email;
 	public int zip;

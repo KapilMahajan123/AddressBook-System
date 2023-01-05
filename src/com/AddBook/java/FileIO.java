@@ -9,9 +9,13 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.opencsv.CSVWriter;
-
+/**
+ * 
+ * @author Kapil
+ *
+ */
 public class FileIO {
-	static String FILE_PATH = "C:\\Users\\mahaj\\Desktop\\229\\Day22-AddressBook\\src\\Files";
+	static String FILE_PATH = "C:\\Users\\mahaj\\Desktop\\229\\Day22-AddressBook\\src\\";
 
 	static Scanner sc = new Scanner(System.in);
 
