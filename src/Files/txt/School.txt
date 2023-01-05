@@ -1,0 +1,17 @@
+Contacts { firstName = Kapil
+lastName = Mahajan
+address = Kochar Nagar
+city = Nagpur
+state = Maharashtra
+email = kapilmahajan735@gmail.com
+phoneNumber = 7798655562
+zip = 410001}
+
+Contacts { firstName = Sagar
+lastName = Patil
+address = Sambhaji Nagar
+city = Pune
+state = Maharastra
+email = patilsagar55@gmail.com
+phoneNumber = 78654892219
+zip = 423001}
